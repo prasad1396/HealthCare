@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Specialization;
 import com.example.demo.exception.SpecializationNotFoundException;
 import com.example.demo.service.ISpecializationService;
+import com.example.demo.view.SpecilizationExcelView;
 
 @Controller
 @RequestMapping("/spec")
@@ -107,6 +109,17 @@ public class SpecializationController {
 			message = name + ", already exist";
 		}
 		return message; // this is not viewName this is a message
+	}
+	
+	
+	
+	// here export data to excel file 
+	@GetMapping("/excel")
+	public  ModelAndView exportToExcel() {
+		ModelAndView m = new ModelAndView();	
+		m.setView(new SpecilizationExcelView());
+		return m;
+		
 	}
 
 }
