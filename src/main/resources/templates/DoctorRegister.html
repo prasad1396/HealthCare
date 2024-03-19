@@ -14,99 +14,116 @@
 				<h3>Doctor Register</h3>
 			</div>
 			<div class="card-body">
-				<form th:action="@{/doctReg/save}" method="post" id="doctorForm">
+				<form th:action="@{/doctor/save}" method="post" id="docForm">
 					<!-- row #1 -->
 					<div class="row">
 						<div class="col-2">
-							<label for="">First Name</label>
+							<label for="firstName">FirstName</label>
 						</div>
 						<div class="col-4">
 							<input type="text" name="firstName" id="firstName" class="form-control" />
 						</div>
 						<div class="col-6">
-							<span id="specCodeError"></span>
+							<span id="firstNameError"></span>
 						</div>
 					</div>
 					<!-- row #2 -->
 
 					<div class="row">
 						<div class="col-2">
-							<label for="">LastName</label>
+							<label for="lastName">LastName</label>
 						</div>
 						<div class="col-4">
 							<input type="text" name="lastName" id="lastName" class="form-control" />
 						</div>
 						<div class="col-6">
-							<span id="specNameError"></span>
+							<span id="lastNameError"></span>
 						</div>
 					</div>
 					<!-- row #3 -->
 
 					<div class="row">
 						<div class="col-2">
-							<label for="">Email</label>
+							<label for="email">Email</label>
 						</div>
 						<div class="col-4">
-							<input type="text" name="email" id="email" class="form-control" />
+							<input type="text" name="email" id="email" class="form-control"></input>
 						</div>
 						<div class="col-6">
-							<span id="specNoteError"></span>
+							<span id="emailError"></span>
 						</div>
 					</div>
-					
-					
+
+					<!-- row #4 -->
+
 					<div class="row">
 						<div class="col-2">
-							<label for="">Specilization</label>
+							<label for="address">Address</label>
 						</div>
 						<div class="col-4">
-							<input type="text" name="specilization" id="specilization" class="form-control" />
+							<textarea name="address" id="address" class="form-control"></textarea>
 						</div>
-					
+						<div class="col-6">
+							<span id="addressError"></span>
+						</div>
 					</div>
-					
-					
+
+					<!-- row #5 -->
+
 					<div class="row">
 						<div class="col-2">
-							<label for="">Address</label>
+							<label for="mobile">Mobile</label>
 						</div>
 						<div class="col-4">
-						<input type="text" name="address" id="address" class="form-control" />
+							<input type="text" name="mobile" id="mobile" class="form-control"></input>
 						</div>
-					
+						<div class="col-6">
+							<span id="mobileError"></span>
+						</div>
 					</div>
-					
+
+
+					<!-- row #6 -->
+
 					<div class="row">
 						<div class="col-2">
-							<label for="">Mobile</label>
+							<label for="gender">Gender</label>
 						</div>
 						<div class="col-4">
-							<input type="number" id="mobileNo" name="mobileNo">
+							<input type="radio" name="gender" id="gender1" value="male" /> Male
+							<input type="radio" name="gender" id="gender2" value="female" /> Female
 						</div>
-					
+						<div class="col-6">
+							<span id="genderError"></span>
+						</div>
 					</div>
-					
-					
-						
+					<!-- row #7 -->
+
 					<div class="row">
 						<div class="col-2">
-							<label for="">Note</label>
+							<label for="note">Note</label>
 						</div>
 						<div class="col-4">
-							<input type="text" id="note" name="note">
+							<textarea name="note" id="note" class="form-control"></textarea>
 						</div>
-					
+						<div class="col-6">
+							<span id="noteError"></span>
+						</div>
 					</div>
+
 					<button type="submit" class="btn btn-success">Create <i class="fa fa-plus-circle"
 							aria-hidden="true"></i></button>
+
+
+				</form>
 			</div>
 			<div th:if="${message != null}" class="card-footer bg-white text-info">
 				<span th:text="${message}"></span>
 			</div>
 		</div>
 	</div>
-	<script th:src="@{/myjs/doctReg_validate.js}">
-		
+	<script th:src="@{/myjs/doc_validate.js}">
+
 	</script>
 </body>
 
