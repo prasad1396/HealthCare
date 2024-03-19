@@ -101,5 +101,7 @@ public class DoctorController {
 	// 6.email and mobile validation using ajax
 
 	// 7. excel export
+	
+	//prasaddsdsd
 
 }
