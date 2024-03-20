@@ -36,8 +36,9 @@ public class PatientController {
 	// 2.save on submit
 	@PostMapping("/save")
 	public String save(@ModelAttribute Patient patient, RedirectAttributes attributes) {
+		System.out.println("savingPatientCtrl::" +patient);
 		Long id = service.savePatient(patient);
-		System.out.println("savingPatient::" +id);
+		System.out.println("savingPatientId::" +id);
 		attributes.addAttribute("message", "patient(" + id + ") is created");
 		return "redirect:register";
 
@@ -46,7 +47,10 @@ public class PatientController {
 	// 3.display data
 	@GetMapping("/all")
 	public String display(Model model, @RequestParam(value = "message", required = false) String message) {
+		System.out.println("gettingDataCtrl11::" +service.getAllPatient());
 		List<Patient> list = service.getAllPatient();
+		
+//		System.out.println("gettingDataCtrl::" +list);
 		model.addAttribute("list", list);
 		model.addAttribute("message", message);
 		return "PatientData";
@@ -80,6 +84,7 @@ public class PatientController {
 		String page = null;
 		try {
 			Patient patient = service.getOnePatient(id);
+			System.out.println("editCtrl::"+patient );
 			model.addAttribute("patient", patient);
 			page = "PatientEdit";
 
@@ -96,7 +101,9 @@ public class PatientController {
 	// 6.do update
 	@PostMapping("/update")
 	public String doUpdate(@ModelAttribute Patient patient, RedirectAttributes attributes) {
+		System.out.println("patientUpdateCtrl" +patient.getFirstName());
 		service.updatePatient(patient);
+//		System.out.println("patientUpdateCtrl" +service.updatePatient(patient));
 		attributes.addAttribute("message", "Patient (" + patient.getId() + ") is updated");
 		return "redirect:all";
 

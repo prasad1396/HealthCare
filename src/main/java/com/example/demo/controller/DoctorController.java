@@ -44,6 +44,7 @@ public class DoctorController {
 	@GetMapping("/all")
 	public String display(Model model, @RequestParam(value = "message", required = false) String message) {
 		List<Doctor> list = service.getAllDoctor();
+		System.out.println("list"+list.toString());
 		model.addAttribute("list", list);
 		model.addAttribute("message", message);
 		return "DoctorData";

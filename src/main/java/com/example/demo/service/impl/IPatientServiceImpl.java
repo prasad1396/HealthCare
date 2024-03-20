@@ -18,16 +18,20 @@ import com.example.demo.service.IPatientService;
 public class IPatientServiceImpl implements IPatientService{
 	@Autowired
 	private PatientRepository repo;
+   
 
 	@Override
 	public Long savePatient(Patient  patient) {
 		// TODO Auto-generated method stub
+		System.out.println("savingPatientService::" +patient);
 		return repo.save(patient).getId();
 	}
 
 	@Override
 	public List<Patient> getAllPatient() {
+//		System.out.println("getAllDatService" +getAllPatient());
 		// TODO Auto-generated method stub
+		System.out.println("GetAllService::::" +repo.findAll());
 		return repo.findAll();
 	}
 
@@ -41,6 +45,7 @@ public class IPatientServiceImpl implements IPatientService{
 	@Override
 	public Patient getOnePatient(Long id) {
 		// TODO Auto-generated method stub
+		System.out.println("editService" +repo.findById(id));
 		return repo.findById(id).orElseThrow(() -> new PatientNotFoundException(id + ",not exist"));
 	}
 
