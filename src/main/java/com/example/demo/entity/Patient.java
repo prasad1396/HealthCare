@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -44,8 +46,10 @@ public class Patient {
 	@Column(name = "pat_mobile_col")
 	private String mobile;
 
+	 
 	@Column(name = "pat_dob_col")
 	@DateTimeFormat(iso = ISO.DATE)
+	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 
 	@Column(name = "pat_marStatus_col")
@@ -59,7 +63,8 @@ public class Patient {
 
 //	@Column(name = "pat_medchstry_col")
 	@ElementCollection
-	@CollectionTable(name = "pat_medi_hist_tab", joinColumns = @JoinColumn(name = "pat_medchstry_col"))
+	@CollectionTable(name = "pat_medi_hist_tab", joinColumns = @JoinColumn(name = "pat_hst_id_fk_col_"))
+	@Column(name="pat_medi_hist_col")
 	private Set<String> mediHistroy;
 
 	@Column(name = "pat_othe_col")
